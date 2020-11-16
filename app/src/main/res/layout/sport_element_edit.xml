@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="7dp">
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/durationSwitchLabel"
+        android:layout_marginEnd="15dp"
+        />
+
+    <TextView
+        android:id="@+id/durationSwitchLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/durationSwitch"
+        app:layout_constraintTop_toTopOf="@id/durationSwitch"
+        app:layout_constraintBottom_toBottomOf="@id/durationSwitch"
+        android:text="@string/duration"
+        android:layout_marginEnd="10dp"/>
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/durationSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/distanceSwitch"
+        app:layout_constraintTop_toTopOf="@id/distanceSwitch"
+        app:layout_constraintBottom_toBottomOf="@id/distanceSwitch"
+        android:text="@string/distance"
+        android:layout_marginEnd="10dp"/>
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/distanceSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/durationSwitch"
+        android:layout_marginTop="5dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

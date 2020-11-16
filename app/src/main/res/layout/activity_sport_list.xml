@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SportListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sportList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -14,7 +15,7 @@
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addGoalButton"
+        android:id="@+id/addSportButton"
         android:layout_width="70dp"
         android:layout_height="70dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,6 +24,6 @@
         app:srcCompat="@drawable/ic_baseline_add_48"
         android:layout_marginBottom="30dp"
         android:layout_marginEnd="30dp"
-        android:contentDescription="@string/add_goal" />
+        android:contentDescription="@string/add_sport" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
