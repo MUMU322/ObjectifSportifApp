@@ -13,7 +13,7 @@ interface Goal {
     val id: Int
     val beginDate: Date
     val endDate: Date
-    val sportId: Int
+    val sport: Sport
 
     //var duration: Duration? = null
     //var distance: Float? = null

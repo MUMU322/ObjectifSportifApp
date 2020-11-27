@@ -21,7 +21,7 @@ abstract class AppDatabase : RoomDatabase() {
         private lateinit var INSTANCE : AppDatabase
 
         fun getAppDatabase(context: Context): AppDatabase {
-            if(INSTANCE == null){
+            if(!this::INSTANCE.isInitialized){
                 INSTANCE = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java,
                     DB_NAME
                 ).build()

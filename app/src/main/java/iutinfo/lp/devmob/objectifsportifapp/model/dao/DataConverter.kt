@@ -5,11 +5,9 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import iutinfo.lp.devmob.objectifsportifapp.model.Sport
 import java.lang.reflect.Type
+import java.time.Duration
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlin.time.Duration
-import kotlin.time.ExperimentalTime
-import kotlin.time.toDuration
 
 /**
  * Because we can't do object reference within room we have to convert objects to basic java object (POJO)
@@ -28,15 +26,16 @@ class DataConverter {
         return longDate?.let { Date(it) }
     }
 
-    @ExperimentalTime
     @TypeConverter
-    fun durationToStamp(duration: Duration?): Double? = duration?.inMinutes
-
-    @ExperimentalTime
-    @TypeConverter
-    fun durationToStamp(input: Double): Duration?{
-        return input.toDuration(TimeUnit.MINUTES)
+    fun durationToStamp(duration: Duration): Long{
+        return duration.toMinutes()
     }
+
+    @TypeConverter
+    fun durationToStamp(input: Long): Duration {
+        return Duration.ofMinutes(input)
+    }
+
     @TypeConverter
     fun sportToString(sport: Sport?): String? {
         val gson = Gson()

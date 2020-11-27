@@ -6,9 +6,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "sports")
 data class Sport(
-    @PrimaryKey val uid : Int = 0,
-    @ColumnInfo val name :String = "",
-    @ColumnInfo val duration:Boolean = false,
-    @ColumnInfo val distance:Boolean = false
+    @PrimaryKey(autoGenerate = true) val uid : Int,
+    val name :String,
+    val durationOption:Boolean,
+    val distanceOption:Boolean
 ) {
+    constructor(name: String, durationOption: Boolean, distanceOption: Boolean) : this(0,name,durationOption,distanceOption)
 }

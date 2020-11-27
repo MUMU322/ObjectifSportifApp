@@ -1,29 +1,20 @@
 package iutinfo.lp.devmob.objectifsportifapp.model
 
-import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
-import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
-import kotlin.time.Duration
+import java.time.Duration
 import java.util.*
-import kotlin.time.ExperimentalTime
 
 @Entity(
     tableName = "duration_goals",
-    foreignKeys = [
-        androidx.room.ForeignKey(
-            entity = Sport::class,
-            parentColumns = ["uid"],
-            childColumns = ["sportId"],
-            onDelete = CASCADE
-        )]
 )
-class GoalDuration @ExperimentalTime constructor(
-    @PrimaryKey override val id: Int = 0,
-    override val sportId: Int = 0,
-    @ColumnInfo override val beginDate: Date = Date(),
-    @ColumnInfo override val endDate: Date = Date(),
-    @ColumnInfo val duration: Duration? = Duration.ZERO
+class GoalDuration constructor(
+    @PrimaryKey override val id: Int,
+    @Embedded override val sport: Sport,
+    override val beginDate: Date,
+    override val endDate: Date,
+    val duration: Duration,
 ) : Goal {
 
 //    override fun getTimeLeft(): Time {

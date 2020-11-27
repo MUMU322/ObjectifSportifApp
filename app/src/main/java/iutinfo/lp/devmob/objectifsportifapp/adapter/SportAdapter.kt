@@ -23,25 +23,21 @@ class SportAdapter(
     private var database = AppDatabase.AppDatabaseProvider.getAppDatabase(context).sportDao()
     private var sportList: List<Sport> = database.getAll()
 
-    class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.sport_element, parent, false)
-        return ItemViewHolder(adapterLayout)
+        return ItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.sport_element, parent, false))
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.itemView.sportNameField.text = sportList[position].name
 
-        if(sportList[position].distance){
+        if(sportList[position].distanceOption){
             var drawable : Drawable? = AppCompatResources.getDrawable(context,R.drawable.ic_baseline_timeline_24)
             if (drawable != null) {
                 DrawableCompat.wrap(drawable).setTint(Color.GREEN)
             }
         }
-        if(sportList[position].duration){
+        if(sportList[position].durationOption){
             var drawable : Drawable? = AppCompatResources.getDrawable(context,R.drawable.ic_baseline_timer_24)
             if(drawable != null){
                 DrawableCompat.wrap(drawable).setTint(Color.GREEN)
@@ -55,5 +51,9 @@ class SportAdapter(
 
     override fun getItemCount(): Int {
         return sportList.size
+    }
+
+
+    class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
     }
 }

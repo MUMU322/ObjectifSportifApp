@@ -20,7 +20,7 @@ class SportListActivity : AppCompatActivity() {
         sportList.adapter =  sportAdapter
         val db = AppDatabase.AppDatabaseProvider.getAppDatabase(this).sportDao()
         addSportButton.setOnClickListener {
-            val singleSport = Sport("karaté", duration = true, distance = false)
+            val singleSport = Sport("Escrim", true,false)
             db.insert(singleSport)
         }
         super.onCreate(savedInstanceState, persistentState)

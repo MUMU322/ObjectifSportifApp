@@ -6,15 +6,15 @@ import iutinfo.lp.devmob.objectifsportifapp.model.GoalDistance
 import iutinfo.lp.devmob.objectifsportifapp.model.Sport
 
 @Dao
-abstract class GoalDistanceDao : GoalDao<GoalDistance> {
+interface GoalDistanceDao : GoalDao<GoalDistance> {
 
     @Query("SELECT * FROM distance_goals")
-    abstract fun getAll(): ArrayList<GoalDistance>
+    fun getAll(): List<GoalDistance>
 
     @Query("SELECT * FROM distance_goals WHERE id LIKE :id LIMIT 1")
-    abstract fun findById(id: Int): GoalDistance
+    fun findById(id: Int): GoalDistance
 
-    @Query("SELECT * FROM distance_goals d, sports s WHERE d.sportId == s.uid")
-    abstract fun findBySport(sport: Sport): ArrayList<GoalDistance>
+    @Query("SELECT * FROM distance_goals d WHERE d.uid = :uid")
+    fun findBySport(uid : Int): List<GoalDistance>
 
 }
